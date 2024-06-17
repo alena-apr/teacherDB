@@ -1,13 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { UserDto } from 'src/dto/user';
 import { User, UserDocument } from 'src/schemas/user';
 import { comparePasswords, encodePassword } from 'src/utils/bcrypt';
 
 @Injectable()
 export class UserService {
     constructor(
-        @InjectModel(User.name) private userModel: Model<UserDocument>,
+      @InjectModel(User.name) private userModel: Model<UserDocument>,
+      private jwtService: JwtService
     ) {
         console.log('UsersService run');
     }
@@ -26,13 +29,6 @@ export class UserService {
         const userData = new this.userModel({ ...data, psw });
         return userData.save();
     }
-
-
-
-
-
-
-
 
     async checkAuthUser(login: string, psw: string): Promise<User> {
         console.log(`here's checkAuthUser`);
@@ -55,13 +51,13 @@ export class UserService {
         return this.userModel.find({ login: login });
       }
     
-    //   async login(user: UserDto) {
-    //     console.log(`here's login`)
-    //     const payload = { login: user.login, psw: user.psw };
-    //     const userFromDB = await this.userModel.find({ login: user.login });
-    //     return {
-    //       id: userFromDB[0]._id,
-    //       access_token: this.jwtService.sign(payload),
-    //     };
-    //   }
+      async login(user: UserDto) {
+        console.log(`here's login`)
+        const payload = { login: user.login, psw: user.psw };
+        const userFromDB = await this.userModel.find({ login: user.login });
+        return {
+          id: userFromDB[0]._id,
+          access_token: this.jwtService.sign(payload),
+        };
+      }
 }

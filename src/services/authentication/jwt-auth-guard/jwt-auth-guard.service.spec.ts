@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GrammarService } from '../../services/grammar/grammar.service'
+import { JwtAuthGuard } from './jwt-auth-guard.service';
 
-describe('GrammarService', () => {
-  let service: GrammarService;
+describe('JwtSuthGusrdService', () => {
+  let service: JwtAuthGuard;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [GrammarService],
+      providers: [JwtAuthGuard],
     }).compile();
 
-    service = module.get<GrammarService>(GrammarService);
+    service = module.get<JwtAuthGuard>(JwtAuthGuard);
   });
 
   it('should be defined', () => {
