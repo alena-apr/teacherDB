@@ -1,15 +1,17 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { IGrammar, IPhrase } from 'src/interfaces/grammar';
+import { IAnswer, IExercise, IFormatedAnswer, IText } from 'src/interfaces/grammar';
 
 export type GrammarDocument = HydratedDocument<Grammar>;
 
 @Schema()
-export class Grammar implements IGrammar {
-    @Prop() id: string;
+export class Grammar implements IExercise {
     @Prop() type: string;
-    @Prop() text: IPhrase[];
-    @Prop() answer: IPhrase[];
+    @Prop() title: string;
+    @Prop() difficulty: number;
+    @Prop() realAnswer: IAnswer[];
+    @Prop() text: IText[];
+    @Prop() studentAnswer: IFormatedAnswer[];
 }
 
 export const GrammarSchema = SchemaFactory.createForClass(Grammar);
