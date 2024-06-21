@@ -5,20 +5,23 @@ import { GrammarService } from 'src/services/grammar/grammar.service';
 
 @Controller('grammar')
 export class GrammarController {
-    constructor(private grammarService: GrammarService) {}
+  constructor(private grammarService: GrammarService) {}
 
-    @Get()
-    getAllGrammar():Promise<IExercise[]> {
-        return this.grammarService.getAllGrammar();
-    }
+  @Get()
+  getAllGrammar(): Promise<IExercise[]> {
+    return this.grammarService.getAllGrammar();
+  }
 
-    @Get(':id')
-    getOneGrammar(@Param('id') id): Promise<IExercise> {
-        return this.grammarService.getGrammarById(id);
-    }
-
-    @Post()
-    sendGrammarExc(@Body() data: GrammarDto): Promise<IExercise> {
-        return this.grammarService.sendGrammar(data);
-    }
+  @Get(':id')
+  getOneGrammar(@Param('id') id): Promise<IExercise> {
+    return this.grammarService.getGrammarById(id);
+  }
+  @Get('exercise/:id')
+  getOneGrammarWOAnswers(@Param('id') id): Promise<IExercise> {
+    return this.grammarService.getGrammarByIdWOAnswers(id);
+  }
+  @Post()
+  sendGrammarExc(@Body() data: GrammarDto): Promise<IExercise> {
+    return this.grammarService.sendGrammar(data);
+  }
 }
