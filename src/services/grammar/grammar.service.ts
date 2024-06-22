@@ -9,7 +9,7 @@ export class GrammarService {
   constructor(
     @InjectModel(Grammar.name) private grammarModel: Model<GrammarDocument>,
   ) {
-    console.log('GrammarService run');
+    console.log('GrammarService runs');
   }
 
   async getAllGrammar(): Promise<IExercise[]> {
@@ -29,7 +29,7 @@ export class GrammarService {
   
   async sendGrammar(data: IExercise): Promise<IExercise> {
     // data.text
-    const ExData = new this.grammarModel({ ...data });
-    return ExData.save();
+    const exerciseData = new this.grammarModel({ ...data });
+    return exerciseData.save();
   }
 }

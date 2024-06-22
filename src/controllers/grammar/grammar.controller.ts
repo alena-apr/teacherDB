@@ -13,13 +13,15 @@ export class GrammarController {
   }
 
   @Get(':id')
-  getOneGrammar(@Param('id') id): Promise<IExercise> {
+  getOneGrammarById(@Param('id') id): Promise<IExercise> {
     return this.grammarService.getGrammarById(id);
   }
+
   @Get('exercise/:id')
   getOneGrammarWOAnswers(@Param('id') id): Promise<IExercise> {
     return this.grammarService.getGrammarByIdWOAnswers(id);
   }
+  
   @Post()
   sendGrammarExc(@Body() data: GrammarDto): Promise<IExercise> {
     return this.grammarService.sendGrammar(data);

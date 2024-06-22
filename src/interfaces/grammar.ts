@@ -7,6 +7,11 @@ export interface IExercise {
   studentAnswer: IFormatedAnswer[];
 }
 
+// export interface IAnswerForDB extends IExercise {
+//   userId: string;
+//   exerciseId: string;
+// }
+
 export interface IAnswer {
   id: number;
   answer: string;
