@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { IAnswerForDB } from 'src/interfaces/answer';
 import { AnswerGrammar } from 'src/schemas/answer-grammar';
 import { GrammarService } from '../grammar/grammar.service';
-import { IFormatedAnswer, IRawAnswer } from 'src/interfaces/grammar';
+import { IAnswer, IFormatedAnswer } from 'src/interfaces/grammar';
 
 @Injectable()
 export class AnswerGrammarService {
@@ -25,14 +25,20 @@ export class AnswerGrammarService {
 
     async sendAnswer(data: IAnswerForDB): Promise<IAnswerForDB> {
         const answerData = new this.answerGrammarModel({ ...data });
-        const answerExerciseId = answerData.exerciseId;
-        const exercise = await this.grammarService.getGrammarById(answerExerciseId);
-        answerData.studentAnswer = this.checkAnswers(answerData.studentAnswer, exercise.realAnswer);
+      const answerExerciseId = answerData.exerciseId;
+      console.log('answerExerciseId', answerExerciseId)
+      const exercise = await this.grammarService.getGrammarById(answerExerciseId);
+      console.log('exercise', exercise)
+      console.log('answerData', answerData)
+      console.log('answerData.studentAnswers', answerData.studentAnswers)
+      answerData.studentAnswers = this.checkAnswers(answerData.studentAnswers, exercise.realAnswers);
+      console.log('exercise.realAnswers', exercise.realAnswers)
+      console.log('answerData.studentAnswers', answerData.studentAnswers)
         return answerData.save();
     }
 
 
-  checkAnswers(studentAnswers: IFormatedAnswer[], realAnswers: IRawAnswer[]) {
+  checkAnswers(studentAnswers: IFormatedAnswer[], realAnswers: IAnswer[]) {
     console.log('HERE IS THE CHECK ANSWERS');
     const checkedAnswers = studentAnswers.map((studentAnswer) => {
       const check = realAnswers.find(

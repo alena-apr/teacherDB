@@ -9,9 +9,9 @@ export class GrammarDto implements IExercise {
   type: string;
   title: string;
   difficulty: number;
-  realAnswer: IAnswer[];
+  realAnswers: IAnswer[];
   text: IText[];
-  studentAnswer: IFormatedAnswer[];
+  studentAnswers: IFormatedAnswer[];
 }
 
 // const obj = {

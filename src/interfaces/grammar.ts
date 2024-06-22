@@ -2,9 +2,9 @@ export interface IExercise {
   type: string;
   title: string;
   difficulty: number;
-  realAnswer: IAnswer[] | [];
+  realAnswers: IAnswer[] | [];
   text: IText[];
-  studentAnswer: IFormatedAnswer[];
+  studentAnswers: IFormatedAnswer[];
 }
 
 // export interface IAnswerForDB extends IExercise {

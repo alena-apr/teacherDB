@@ -22,7 +22,7 @@ export class GrammarService {
 
   async getGrammarByIdWOAnswers(id: string): Promise<IExercise> {
       const data = await this.grammarModel.findById(id);
-      data.realAnswer = []
+      data.realAnswers = []
       console.log(data)
       return data
   }

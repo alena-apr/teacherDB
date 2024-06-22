@@ -9,9 +9,9 @@ export class Grammar implements IExercise {
     @Prop() type: string;
     @Prop() title: string;
     @Prop() difficulty: number;
-    @Prop() realAnswer: IAnswer[];
+    @Prop() realAnswers: IAnswer[];
     @Prop() text: IText[];
-    @Prop() studentAnswer: IFormatedAnswer[];
+    @Prop() studentAnswers: IFormatedAnswer[];
 }
 
 export const GrammarSchema = SchemaFactory.createForClass(Grammar);

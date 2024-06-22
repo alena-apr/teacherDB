@@ -12,9 +12,9 @@ export class AnswerGrammar implements IAnswerForDB {
     @Prop() type: string;
     @Prop() title: string;
     @Prop() difficulty: number;
-    @Prop() realAnswer: IAnswer[];
+    @Prop() realAnswers: IAnswer[];
     @Prop() text: IText[];
-    @Prop() studentAnswer: IFormatedAnswer[];
+    @Prop() studentAnswers: IFormatedAnswer[];
 }
 
 export const AnswerGrammarSchema = SchemaFactory.createForClass(AnswerGrammar);
