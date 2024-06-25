@@ -13,8 +13,13 @@ export class AnswerGrammarController {
     }
 
     @Get(':id')
-    getOneAnswerById(@Param('id') id): Promise<IAnswerForDB> {
+    getOneAnswerById(@Param('id') id: string): Promise<IAnswerForDB> {
         return this.aswerGrammarService.getAnswerById(id);
+    }
+
+    @Get('answers-for-admin/:id')
+    getAnswersForAdminByUser(@Param('id') id: string): Promise<IAnswerForDB[]> {
+        return this.aswerGrammarService.getAnswersForAdminByUser(id);
     }
 
     @Post()
