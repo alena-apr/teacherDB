@@ -96,11 +96,11 @@ export class AnswerGrammarService {
     return checkedAnswers;
   }
 
-  // makeExercisesIdSet(allUserAnswers: IAnswerForDB[]) {
-  //   const exerciseIdSet = new Set<string>();
-  //   allUserAnswers.forEach((el) => exerciseIdSet.add(el.exerciseId));
-  //   return exerciseIdSet;
-  // }
+  makeExercisesIdSet(allUserAnswers: IAnswerForDB[]) {
+    const exerciseIdSet = new Set<string>();
+    allUserAnswers.forEach((el) => exerciseIdSet.add(el.exerciseId));
+    return exerciseIdSet;
+  }
 
   async getInitialExercises(exerciseIdSet: Set<string>) {
     const exerciseIdArray = Array.from(exerciseIdSet);

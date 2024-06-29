@@ -6,6 +6,8 @@ import { User, UserSchema } from 'src/schemas/user';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/static/private/constants';
+import { AuthService } from 'src/services/authentication/auth/auth.service';
+import { JwtStrategyService } from 'src/services/authentication/jwt-strategy/jwt-strategy.service';
 
 @Module({
   imports: [
@@ -17,6 +19,6 @@ import { jwtConstants } from 'src/static/private/constants';
     }),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, AuthService, JwtStrategyService],
 })
 export class UserModule {}

@@ -16,6 +16,15 @@ export class GrammarService {
     return this.grammarModel.find();
   }
 
+  async getAllGrammarWOAnswers(): Promise<IExercise[]> {
+    const allGrammar: IExercise[] = await this.grammarModel.find(); 
+    const allGrammarWOAnswers: IExercise[] = allGrammar.map((el: IExercise) => {
+      el.realAnswers = [];
+      return el;
+    });
+    return allGrammarWOAnswers
+  }
+
   async getGrammarById(id: string): Promise<IExercise> {
     return this.grammarModel.findById(id);
   }

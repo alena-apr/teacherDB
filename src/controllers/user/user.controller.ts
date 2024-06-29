@@ -6,7 +6,9 @@ import {
   HttpStatus,
   Param,
   Post,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from 'src/dto/user';
 import { User } from 'src/schemas/user';
 import { UserService } from 'src/services/user/user.service';
@@ -46,6 +48,7 @@ export class UserController {
     });
   }
 
+  @UseGuards(AuthGuard('local'))
   @Post(':login')
   authUser(@Body() data: UserDto, @Param('login') login): any {
     return this.userService.login(data);
