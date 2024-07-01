@@ -50,7 +50,7 @@ export class UserController {
 
   @UseGuards(AuthGuard('local'))
   @Post(':login')
-  authUser(@Body() data: UserDto, @Param('login') login): any {
+  authUser(@Body() data: UserDto): any {
     return this.userService.login(data);
   }
 }
