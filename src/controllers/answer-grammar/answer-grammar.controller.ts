@@ -5,27 +5,25 @@ import { AnswerGrammarService } from 'src/services/answer-grammar/answer-grammar
 
 @Controller('answer-grammar')
 export class AnswerGrammarController {
-    constructor(private aswerGrammarService: AnswerGrammarService) { }
-    
-    @Get()
-    getAllAnswers(): Promise<IAnswerForDB[]> {
-        return this.aswerGrammarService.getAllAnswers();
-    }
+  constructor(private aswerGrammarService: AnswerGrammarService) {}
 
-    @Get(':id')
-    getOneAnswerById(@Param('id') id: string): Promise<IAnswerForDB> {
-        return this.aswerGrammarService.getAnswerById(id);
-    }
+  @Get()
+  getAllAnswers(): Promise<IAnswerForDB[]> {
+    return this.aswerGrammarService.getAllAnswers();
+  }
 
-    @Get('answers-for-admin/:id')
-    getAnswersForAdminByUser(@Param('id') id: string): Promise<IAnswerForDB[]> {
-        return this.aswerGrammarService.getAnswersForAdminByUser(id);
-    }
+  @Get(':id')
+  getOneAnswerById(@Param('id') id: string): Promise<IAnswerForDB> {
+    return this.aswerGrammarService.getAnswerById(id);
+  }
 
-    @Post()
-    sendAnswer(@Body() data: AnswerGrammarDto): Promise<IAnswerForDB> {
-        return this.aswerGrammarService.sendAnswer(data);
-    }
-    
+  @Get('answers-for-admin/:id')
+  getAnswersForAdminByUser(@Param('id') id: string): Promise<IAnswerForDB[]> {
+    return this.aswerGrammarService.getAnswersForAdminByUser(id);
+  }
 
+  @Post()
+  sendAnswer(@Body() data: AnswerGrammarDto): Promise<IAnswerForDB> {
+    return this.aswerGrammarService.sendAnswer(data);
+  }
 }

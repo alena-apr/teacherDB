@@ -1,5 +1,4 @@
 export interface IExercise {
-  // _id?: string;
   type: string;
   title: string;
   difficulty: number;
@@ -7,11 +6,6 @@ export interface IExercise {
   text: IText[];
   studentAnswers: IFormatedAnswer[];
 }
-
-// export interface IAnswerForDB extends IExercise {
-//   userId: string;
-//   exerciseId: string;
-// }
 
 export interface IAnswer {
   id: number;
@@ -27,11 +21,10 @@ export interface IText {
 export interface IRawAnswer {
   id: number;
   answer?: string;
-
 }
 
 export interface IFormatedAnswer {
-  id: number; 
+  id: number;
   answer?: string;
   isCorrect: boolean;
 }

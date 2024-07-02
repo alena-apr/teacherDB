@@ -7,14 +7,14 @@ export type AnswerGrammarDocument = HydratedDocument<AnswerGrammar>;
 
 @Schema()
 export class AnswerGrammar implements IAnswerForDB {
-    @Prop() userId: string;
-    @Prop() exerciseId: string;
-    @Prop() type: string;
-    @Prop() title: string;
-    @Prop() difficulty: number;
-    @Prop() realAnswers: IAnswer[];
-    @Prop() text: IText[];
-    @Prop() studentAnswers: IFormatedAnswer[];
+  @Prop() userId: string;
+  @Prop() exerciseId: string;
+  @Prop() type: string;
+  @Prop() title: string;
+  @Prop() difficulty: number;
+  @Prop() realAnswers: IAnswer[];
+  @Prop() text: IText[];
+  @Prop() studentAnswers: IFormatedAnswer[];
 }
 
 export const AnswerGrammarSchema = SchemaFactory.createForClass(AnswerGrammar);

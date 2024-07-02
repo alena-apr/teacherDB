@@ -1,8 +1,8 @@
-import {IUser} from "../interfaces/user";
- 
+import { IUser } from '../interfaces/user';
+
 export class UserDto implements IUser {
-    id: string;
-    login: string;
-    psw: string;
-    email: string;
- }
+  id: string;
+  login: string;
+  psw: string;
+  email: string;
+}

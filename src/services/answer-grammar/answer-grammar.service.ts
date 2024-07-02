@@ -44,8 +44,8 @@ export class AnswerGrammarService {
   async getAnswersForAdminByUser(id: string): Promise<any> {
     const allAnswers = await this.getAllAnswers();
     // const allAnswersByUser = allAnswers.filter((el) => el.userId === id);
-    const allAnswersByUser = allAnswers.filter((el) => el.userId === id)
-      // .map(el => this.attachRealAnswers(el, el.exerciseId));
+    const allAnswersByUser = allAnswers.filter((el) => el.userId === id);
+    // .map(el => this.attachRealAnswers(el, el.exerciseId));
     // const exercisesIdSet = this.makeExercisesIdSet(allAnswersByUser);
     // console.log('ID SET', exercisesIdSet);
     // const exercisesByUser: IExercise[] = await this.getInitialExercises(exercisesIdSet);
@@ -62,24 +62,23 @@ export class AnswerGrammarService {
 
     // const treCivette = this.attach2(allAnswersByUser)
 
-    // const answersByUserWAnswers =  treCivette; 
+    // const answersByUserWAnswers =  treCivette;
     // allAnswersByUser.map
-    
-    
+
     // allAnswersByUser.forEach(el => this.attachRealAnswers(el, el.exerciseId))
-    
+
     // console.log("ALL ANSW WITH ANSW", allAnswersByUser)
-    
+
     // console.log('answerByuserWAnswers', answersByUserWAnswers)
 
     // return answersByUserWAnswers
-    
-    const result = []; 
+
+    const result = [];
 
     for (const el of allAnswersByUser) {
-      result.push(await this.attachRealAnswers(el, el.exerciseId))
+      result.push(await this.attachRealAnswers(el, el.exerciseId));
     }
-    return result
+    return result;
   }
 
   checkAnswers(studentAnswers: IFormatedAnswer[], realAnswers: IAnswer[]) {
@@ -125,13 +124,12 @@ export class AnswerGrammarService {
   // }
   async attachRealAnswers(answerByUser: IAnswerForDB, exerciseId: string) {
     const exerciseById = await this.grammarService.getGrammarById(exerciseId);
-    answerByUser.realAnswers = exerciseById.realAnswers; 
+    answerByUser.realAnswers = exerciseById.realAnswers;
     // console.log(answerByUser);
     return answerByUser;
 
     // const necessaryExercises = await this.getInitialExercises(exerciseId);
-    // const smth = 
-    
+    // const smth =
   }
 
   // attach2(answerByUser: IAnswerForDB[]) {
@@ -143,7 +141,7 @@ export class AnswerGrammarService {
   // }
 
   // async attach3(answersByUser: IAnswerForDB[]) {
-  //   const result = []; 
+  //   const result = [];
 
   //   for (const el of answersByUser) {
   //     result.push(await this.attachRealAnswers(el, el.exerciseId))

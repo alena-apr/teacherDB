@@ -17,12 +17,12 @@ export class GrammarService {
   }
 
   async getAllGrammarWOAnswers(): Promise<IExercise[]> {
-    const allGrammar: IExercise[] = await this.grammarModel.find(); 
+    const allGrammar: IExercise[] = await this.grammarModel.find();
     const allGrammarWOAnswers: IExercise[] = allGrammar.map((el: IExercise) => {
       el.realAnswers = [];
       return el;
     });
-    return allGrammarWOAnswers
+    return allGrammarWOAnswers;
   }
 
   async getGrammarById(id: string): Promise<IExercise> {
@@ -30,12 +30,23 @@ export class GrammarService {
   }
 
   async getGrammarByIdWOAnswers(id: string): Promise<IExercise> {
-      const data = await this.grammarModel.findById(id);
-      data.realAnswers = []
-      console.log(data)
-      return data
+    const data = await this.grammarModel.findById(id);
+    data.realAnswers = [];
+    // console.log(data);
+    return data;
   }
-  
+
+  async getGrammarByName(prompt: string): Promise<IExercise[]> {
+    const grammarByName = await this.grammarModel.find({
+      title: { $regex: prompt, $options: 'i' },
+    });
+    const grammarByNameWOAnswers = grammarByName.map((el) => {
+      el.realAnswers = [];
+      return el;
+    });
+    return grammarByNameWOAnswers;
+  }
+
   async sendGrammar(data: IExercise): Promise<IExercise> {
     // data.text
     const exerciseData = new this.grammarModel({ ...data });

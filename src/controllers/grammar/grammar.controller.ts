@@ -17,6 +17,11 @@ export class GrammarController {
     return this.grammarService.getAllGrammarWOAnswers();
   }
 
+  @Get(':prompt')
+  getGrammarByname(@Param('prompt') prompt): Promise<IExercise[]> {
+    return this.grammarService.getGrammarByName(prompt);
+  }
+
   @Get(':id')
   getOneGrammarById(@Param('id') id): Promise<IExercise> {
     return this.grammarService.getGrammarById(id);
@@ -26,7 +31,7 @@ export class GrammarController {
   getOneGrammarWOAnswers(@Param('id') id): Promise<IExercise> {
     return this.grammarService.getGrammarByIdWOAnswers(id);
   }
-  
+
   @Post()
   sendGrammarExc(@Body() data: GrammarDto): Promise<IExercise> {
     return this.grammarService.sendGrammar(data);
