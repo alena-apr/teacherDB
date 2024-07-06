@@ -41,7 +41,12 @@ export class AnswerGrammarService {
     return answerData.save();
   }
 
-  async getAnswersForAdminByUser(id: string): Promise<any> {
+  async getAnswerByUser(id: string): Promise<IAnswerForDB[]> {
+    const allAnswers = await this.getAllAnswers();
+    return allAnswers.filter((el) => el.userId === id);
+  }
+
+  async getAnswersForAdminByUser(id: string): Promise<IAnswerForDB[]> {
     const allAnswers = await this.getAllAnswers();
     // const allAnswersByUser = allAnswers.filter((el) => el.userId === id);
     const allAnswersByUser = allAnswers.filter((el) => el.userId === id);

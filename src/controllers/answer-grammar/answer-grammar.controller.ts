@@ -22,6 +22,11 @@ export class AnswerGrammarController {
     return this.aswerGrammarService.getAnswersForAdminByUser(id);
   }
 
+  @Get('answers-by-user/:id')
+  getAnswersByUser(@Param('id') id: string): Promise<IAnswerForDB[]> {
+    return this.aswerGrammarService.getAnswerByUser(id);
+  }
+
   @Post()
   sendAnswer(@Body() data: AnswerGrammarDto): Promise<IAnswerForDB> {
     return this.aswerGrammarService.sendAnswer(data);
