@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { GrammarDto } from 'src/dto/grammar';
 import { IExercise } from 'src/interfaces/grammar';
 import { GrammarService } from 'src/services/grammar/grammar.service';
@@ -18,7 +18,7 @@ export class GrammarController {
   }
 
   @Get(':prompt')
-  getGrammarByname(@Param('prompt') prompt): Promise<IExercise[]> {
+  getGrammarByName(@Param('prompt') prompt): Promise<IExercise[]> {
     return this.grammarService.getGrammarByName(prompt);
   }
 
@@ -35,5 +35,10 @@ export class GrammarController {
   @Post()
   sendGrammarExc(@Body() data: GrammarDto): Promise<IExercise> {
     return this.grammarService.sendGrammar(data);
+  }
+
+  @Delete(':id')
+  deleteExerciseById(@Param('id') id): Promise<IExercise> {
+    return this.grammarService.deleteGrammarById(id);
   }
 }

@@ -39,7 +39,7 @@ export class UserController {
         throw new HttpException(
           {
             status: HttpStatus.CONFLICT,
-            errorText: 'Пользователь уже зарегистрирован ',
+            errorText: 'Пользователь уже зарегистрирован',
             errorTextDetails: 'Регистрация доп.инфо from DB',
           },
           HttpStatus.CONFLICT,

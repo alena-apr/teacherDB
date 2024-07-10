@@ -18,7 +18,7 @@ export class AuthService extends PassportStrategy(Strategy) {
       throw new HttpException(
         {
           status: HttpStatus.CONFLICT,
-          errorText: 'Пользователь не найден в базе',
+          errorText: 'Пользователь не найден в базе. Проверьте логин и пароль',
           errorTextDetails: 'Авторизация AuthService доп.инфо from DB',
         },
         HttpStatus.CONFLICT,

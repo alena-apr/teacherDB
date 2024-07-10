@@ -52,4 +52,9 @@ export class GrammarService {
     const exerciseData = new this.grammarModel({ ...data });
     return exerciseData.save();
   }
+
+  async deleteGrammarById(id: string): Promise<IExercise> {
+    return this.grammarModel.findByIdAndDelete(id);
+    // return `Exercise ${id} DELETED`
+  }
 }
